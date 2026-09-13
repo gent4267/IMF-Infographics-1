@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your First Job, 1991</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Serif+Thai:wght@500;600;700&family=Noto+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4EDDD;
+    --paper-dark:#EADFC2;
+    --card-bg:#EFE6D0;
+    --ink:#2B1B12;
+    --ink-soft:#6B5842;
+    --gold:#BF9B30;
+    --gold-deep:#8A6B1C;
+    --maroon:#7A1F2B;
+    --navy:#1B3A5C;
+    --jade:#2F6E52;
+    --rule:#C9A876;
+    --c-con:#7A1F2B;
+    --c-str:#2F6E52;
+    --c-mot:#1B3A5C;
+    --c-dir:#8A6B1C;
+    --font-display:'Fraunces',serif;
+    --font-body:'IBM Plex Sans',sans-serif;
+    --font-mono:'IBM Plex Mono',monospace;
+    --tracking-wide:0.14em;
+    --tracking-med:0.1em;
+    --tracking-tight:0.02em;
+  }
+  body.lang-th{
+    --font-display:'Noto Serif Thai',serif;
+    --font-body:'Noto Sans Thai',sans-serif;
+    --font-mono:'Noto Sans Thai',sans-serif;
+    --tracking-wide:0.02em;
+    --tracking-med:0.01em;
+    --tracking-tight:0em;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    min-height:100vh;
+    position:relative;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";
+    position:fixed; inset:0; pointer-events:none; opacity:0.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{max-width:600px; margin:0 auto; padding:20px 22px 90px; position:relative;}
+
+  .lang-toggle{display:flex; justify-content:center; gap:6px; margin-bottom:22px;}
+  .lang-btn{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase;
+    background:transparent; border:1px solid var(--rule); color:var(--ink-soft);
+    padding:6px 14px; border-radius:20px; cursor:pointer; transition:all .2s ease;
+  }
+  .lang-btn:hover{border-color:var(--maroon); color:var(--maroon);}
+  .lang-btn.active{background:var(--maroon); border-color:var(--maroon); color:var(--paper);}
+
+  /* ===== Letterhead: arched pediment + overlapping seal ===== */
+  .pediment-wrap{position:relative;}
+  .pediment-cap{
+    width:150px; height:75px; margin:0 auto;
+    background:var(--card-bg);
+    border:2px solid var(--gold);
+    border-bottom:none;
+    border-radius:150px 150px 0 0;
+    position:relative; z-index:1;
+  }
+  .letterhead{
+    background:var(--card-bg);
+    border:2px solid var(--gold);
+    margin-top:-2px;
+    padding:6px 24px 26px;
+    text-align:center;
+    position:relative;
+    margin-bottom:28px;
+  }
+  .letterhead::before{
+    content:"";
+    position:absolute; top:7px; left:7px; right:7px; bottom:7px;
+    border:1px solid var(--rule);
+    pointer-events:none;
+  }
+  .seal{
+    position:absolute; top:-34px; left:50%; transform:translateX(-50%) rotate(-4deg);
+    width:64px; height:64px; border-radius:50%;
+    background:repeating-conic-gradient(from 0deg, var(--gold) 0deg 7deg, var(--gold-deep) 7deg 14deg);
+    border:2px solid var(--gold-deep);
+    box-shadow:0 0 0 4px var(--paper), 0 3px 6px rgba(43,27,18,0.25);
+    z-index:3;
+  }
+  .seal::after{
+    content:"";
+    position:absolute; inset:10px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #fdf0cc, var(--gold) 78%);
+    border:1px solid var(--gold-deep);
+  }
+  .eyebrow{
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:var(--tracking-wide);
+    text-transform:uppercase; color:var(--gold-deep); line-height:1.7; margin-top:34px;
+  }
+  .eyebrow strong{color:var(--maroon);}
+  h1.title{
+    font-family:var(--font-display); font-weight:700; font-size:clamp(23px,6vw,33px);
+    color:var(--maroon); letter-spacing:-0.01em; margin:8px 0 4px; line-height:1.4;
+  }
+  body.lang-th h1.title{letter-spacing:0;}
+  .subtitle{font-family:var(--font-display); font-style:italic; font-weight:500; color:var(--ink-soft); font-size:15px;}
+  body.lang-th .subtitle{font-style:normal;}
+
+  .badge-rail{display:flex; align-items:center; justify-content:center; gap:6px; margin:22px 0 30px; flex-wrap:wrap;}
+  .stamp-slot{
+    width:26px;height:26px; border-radius:50%; border:1.5px solid var(--rule);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-mono); font-size:11px; font-weight:600;
+    color:transparent; background:transparent; transition:all .35s ease; position:relative;
+  }
+  .stamp-slot.filled{
+    border-color:var(--maroon); color:var(--maroon);
+    transform:rotate(var(--r,-6deg)) scale(1); animation:stampIn .4s ease;
+  }
+  @keyframes stampIn{
+    0%{transform:rotate(var(--r,-6deg)) scale(1.8); opacity:0;}
+    60%{opacity:1;}
+    100%{transform:rotate(var(--r,-6deg)) scale(1); opacity:1;}
+  }
+
+  /* Intro card keeps a simple frame — no clipped corner, it's not a "form" */
+  .card{background:var(--card-bg); border:1.5px solid var(--rule); border-radius:2px; padding:28px 26px; position:relative;}
+  .card::before{
+    content:""; position:absolute; top:6px; left:6px; right:-6px; bottom:-6px;
+    border:1px solid var(--gold); z-index:-1; opacity:0.5;
+  }
+
+  .intro-body{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin-bottom:24px;}
+  .intro-body strong{color:var(--maroon);}
+  .btn-stamp{
+    display:inline-flex; align-items:center; gap:10px; font-family:var(--font-mono); font-size:13px;
+    letter-spacing:var(--tracking-med); text-transform:uppercase; background:transparent; border:2px solid var(--maroon);
+    color:var(--maroon); padding:12px 22px; border-radius:2px; cursor:pointer; transition:all .2s ease;
+  }
+  .btn-stamp:hover{background:var(--maroon); color:var(--paper);}
+  .btn-row{text-align:center; margin-top:6px;}
+
+  /* ===== Question: clipped-corner form with perforated edge ===== */
+  .form-card{
+    background:var(--card-bg);
+    border:1.5px solid var(--rule);
+    position:relative;
+    padding:24px 24px 22px 30px;
+    clip-path:polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 0 100%);
+  }
+  .form-card::before{
+    content:"";
+    position:absolute; left:-1px; top:0; bottom:0; width:12px;
+    background-image:radial-gradient(circle 5px at 6px 12px, var(--paper) 99%, transparent 100%);
+    background-size:12px 24px;
+    background-repeat:repeat-y;
+  }
+  .form-tag{
+    position:absolute; top:5px; right:-2px;
+    font-family:var(--font-mono); font-size:9px; letter-spacing:0.05em; text-transform:uppercase;
+    color:var(--paper); background:var(--maroon);
+    padding:3px 10px 3px 8px;
+  }
+  .q-eyebrow{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:var(--tracking-med); text-transform:uppercase;
+    color:var(--ink-soft); margin:10px 0 14px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;
+  }
+  .q-text{
+    font-family:var(--font-display); font-weight:500; font-size:clamp(19px,3.6vw,22px); line-height:1.5; margin:0 0 22px;
+    color:var(--ink);
+  }
+  .options{display:flex; flex-direction:column; gap:9px;}
+  .opt{
+    text-align:left; background:var(--paper); border:1px solid var(--rule); border-radius:2px;
+    padding:13px 15px; font-family:var(--font-body); font-size:15px; line-height:1.5;
+    color:var(--ink); cursor:pointer; transition:background .2s ease, border-color .2s ease, transform .15s ease;
+  }
+  .opt:hover{background:#fff; border-color:var(--maroon); transform:translateX(3px);}
+  .opt:focus-visible{outline:2px solid var(--navy); outline-offset:2px;}
+  .opt-letter{font-family:var(--font-mono); font-size:11px; color:var(--maroon); font-weight:600; margin-right:8px;}
+
+  /* ===== Result: die-cut badge with lanyard punch + ribbon corner ===== */
+  .badge-mount{display:flex; justify-content:center; padding-top:20px;}
+  .badge{
+    width:100%; max-width:460px;
+    background:var(--card-bg);
+    border:2px solid var(--role-color,var(--maroon));
+    border-radius:16px;
+    position:relative;
+    transform:rotate(-0.7deg);
+    box-shadow:0 6px 16px rgba(43,27,18,0.16);
+    padding:32px 26px 24px;
+  }
+  .lanyard{
+    position:absolute; top:-42px; left:50%; transform:translateX(-50%);
+    width:3px; height:34px; background:var(--role-color,var(--maroon));
+  }
+  .punch{
+    position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+    width:20px; height:20px; border-radius:50%;
+    background:var(--paper);
+    border:2px solid var(--ink-soft);
+    box-shadow:inset 0 2px 3px rgba(0,0,0,0.15);
+  }
+  .ribbon-corner{
+    position:absolute; top:14px; right:-6px;
+    background:var(--gold); color:var(--ink);
+    font-family:var(--font-mono); font-size:9px; letter-spacing:0.08em; text-transform:uppercase;
+    padding:4px 12px; transform:rotate(6deg);
+    box-shadow:0 2px 3px rgba(0,0,0,0.15);
+  }
+  .ribbon-corner::after{
+    content:"";
+    position:absolute; right:-6px; top:0;
+    border-style:solid; border-width:0 6px 12px 0;
+    border-color:transparent transparent var(--gold-deep) transparent;
+  }
+  .role-name{
+    font-family:var(--font-display); font-weight:700; font-size:clamp(21px,5vw,26px); color:var(--role-color,var(--maroon));
+    margin:8px 0 4px; line-height:1.4;
+  }
+  .trait-code{
+    font-family:var(--font-mono); font-size:12px; letter-spacing:var(--tracking-med); color:var(--ink-soft);
+    margin-bottom:6px; text-transform:uppercase;
+  }
+  .trait-code b{color:var(--role-color,var(--maroon));}
+  .role-motto{font-family:var(--font-display); font-style:italic; font-weight:500; color:var(--ink-soft); font-size:14.5px; margin-bottom:16px; line-height:1.5;}
+  body.lang-th .role-motto{font-style:normal;}
+  .role-note{font-size:14.5px; line-height:1.7; color:var(--ink); margin-bottom:20px;}
+
+  .runner-up{
+    font-family:var(--font-mono); font-size:11.5px; color:var(--ink-soft);
+    border-top:1px dashed var(--rule); padding-top:12px; margin-bottom:16px;
+  }
+  .runner-up b{color:var(--ink);}
+
+  .breakdown{border-top:1px dashed var(--rule); padding-top:16px;}
+  .breakdown-title{
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:var(--tracking-med); text-transform:uppercase;
+    color:var(--ink-soft); margin-bottom:10px;
+  }
+  .bd-row{display:flex; align-items:center; gap:10px; margin-bottom:9px; font-family:var(--font-mono); font-size:11px;}
+  .bd-pole{width:90px; flex-shrink:0; text-align:right; color:var(--ink-soft);}
+  .bd-pole.right{text-align:left;}
+  .bd-track{
+    flex:1; height:8px; border:1px solid var(--rule); background:var(--paper); position:relative; border-radius:4px;
+  }
+  .bd-fill{position:absolute; top:-2px; width:10px; height:10px; border-radius:50%; background:var(--axis-color,var(--ink)); transform:translateX(-50%);}
+
+  .badge-footer{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px;
+    margin-top:16px; padding-top:14px; border-top:1px dashed var(--rule);
+    font-family:var(--font-mono); font-size:10px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:var(--tracking-med);
+  }
+
+  .btn-row-result{text-align:center; margin-top:30px;}
+  .btn-ghost{
+    font-family:var(--font-mono); font-size:12px; letter-spacing:var(--tracking-med); text-transform:uppercase;
+    background:none; border:none; color:var(--ink-soft); text-decoration:underline; cursor:pointer; padding:8px;
+  }
+  .btn-ghost:hover{color:var(--maroon);}
+
+  @media (prefers-reduced-motion: reduce){
+    .stamp-slot.filled{animation:none;}
+    .opt:hover{transform:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="lang-toggle">
+    <button class="lang-btn active" id="btnEn" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" id="btnTh" onclick="setLang('th')">ไทย</button>
+  </div>
+
+  <div class="pediment-wrap">
+    <div class="pediment-cap"></div>
+    <div class="letterhead">
+      <div class="seal"></div>
+      <div class="eyebrow" id="eyebrow1"></div>
+      <div class="eyebrow" id="eyebrow2"></div>
+      <h1 class="title" id="pageTitle"></h1>
+      <div class="subtitle" id="pageSubtitle"></div>
+    </div>
+  </div>
+
+  <div class="badge-rail" id="badgeRail"></div>
+  <div id="app"></div>
+
+</div>
+
+<script>
+let LANG = 'en';
+let SCREEN = 'intro';
+
+const STRINGS = {
+  en: {
+    eyebrow1: '<strong>46th Annual Meetings</strong> · Boards of Governors, IMF &amp; World Bank Group',
+    eyebrow2: 'Bangkok, Thailand — October 1991',
+    title: 'Your First Job, 1991',
+    subtitle: "Find out which post you'd have landed, fresh out of university.",
+    intro1: 'The Queen Sirikit National Convention Center opens its doors in six days. Sixty finance ministries, five hundred journalists, and delegations from over a hundred and fifty countries are about to descend on Bangkok for the <strong>46th Annual Meetings</strong>, and the Host Committee still needs to fill thirteen support posts.',
+    intro2: "You've just finished university, CV in hand, and you're pounding the pavement for your first real job. Word is the Host Committee is hiring fast for the big event. Find out exactly which post you'd land.",
+    beginBtn: 'Begin Interview',
+    questionOf: (n, total) => `Question ${n} of ${total}`,
+    ribbonLeft: 'Host Committee — Assignment Notice',
+    ribbonRight: 'Bangkok · Oct 1991',
+    traitProfile: 'Trait profile:',
+    closeSecond: (name) => `Close second: <b>${name}</b> — not far behind on this profile.`,
+    breakdownTitle: 'Your Trait Profile',
+    reapplyBtn: 'Reapply for a different desk →',
+    formTag: 'Survey Form',
+    approvedTag: 'Approved',
+    letters: ['A','B','C','D']
+  },
+  th: {
+    eyebrow1: '<strong>การประชุมประจำปี ครั้งที่ 46</strong> · คณะผู้ว่าการ กองทุนการเงินระหว่างประเทศ และกลุ่มธนาคารโลก',
+    eyebrow2: 'กรุงเทพมหานคร ประเทศไทย — ตุลาคม 2534',
+    title: 'งานแรกของคุณ ปี 2534',
+    subtitle: 'ค้นหาว่าคุณจะได้ตำแหน่งไหน หลังเรียนจบใหม่ ๆ',
+    intro1: 'ศูนย์การประชุมแห่งชาติสิริกิติ์จะเปิดประตูต้อนรับในอีกหกวันข้างหน้า กระทรวงการคลังกว่าหกสิบประเทศ ผู้สื่อข่าวห้าร้อยคน และคณะผู้แทนจากกว่าหนึ่งร้อยห้าสิบประเทศ กำลังจะหลั่งไหลเข้าสู่กรุงเทพฯ เพื่อร่วม<strong>การประชุมประจำปีครั้งที่ 46</strong> และคณะกรรมการเจ้าภาพยังขาดกำลังคนอีกสิบสามตำแหน่ง',
+    intro2: 'คุณเพิ่งเรียนจบมหาวิทยาลัย ถือเรซูเม่ในมือ ออกตระเวนหางานแรกในชีวิตอย่างจริงจัง ได้ข่าวมาว่าคณะกรรมการเจ้าภาพกำลังเร่งรับสมัครคนสำหรับงานใหญ่ครั้งนี้ มาดูกันว่าคุณจะได้ตำแหน่งไหน',
+    beginBtn: 'เริ่มการสัมภาษณ์',
+    questionOf: (n, total) => `คำถามที่ ${n} จาก ${total}`,
+    ribbonLeft: 'คณะกรรมการเจ้าภาพ — หนังสือแจ้งมอบหมายตำแหน่ง',
+    ribbonRight: 'กรุงเทพฯ · ต.ค. 2534',
+    traitProfile: 'โปรไฟล์บุคลิก:',
+    closeSecond: (name) => `อันดับรองลงมา: <b>${name}</b> — คะแนนใกล้เคียงกันมาก`,
+    breakdownTitle: 'โปรไฟล์บุคลิกของคุณ',
+    reapplyBtn: 'สมัครใหม่สำหรับตำแหน่งอื่น →',
+    formTag: 'แบบสอบถาม',
+    approvedTag: 'อนุมัติ',
+    letters: ['ก','ข','ค','ง']
+  }
+};
+
+const AXES = {
+  con: { low:{en:"Behind-the-scenes", th:"เบื้องหลัง"}, high:{en:"People-facing", th:"พบปะผู้คน"}, lowCode:"I", highCode:"O", color:"var(--c-con)" },
+  str: { low:{en:"Structured", th:"เป็นระบบ"}, high:{en:"Adaptive", th:"ยืดหยุ่น"}, lowCode:"S", highCode:"F", color:"var(--c-str)" },
+  mot: { low:{en:"Deskbound", th:"นั่งโต๊ะ"}, high:{en:"Physically active", th:"เคลื่อนไหวตลอด"}, lowCode:"D", highCode:"M", color:"var(--c-mot)" },
+  dir: { low:{en:"Guided", th:"ทำตามคำสั่ง"}, high:{en:"Autonomous", th:"ตัดสินใจเอง"}, lowCode:"G", highCode:"L", color:"var(--c-dir)" }
+};
+
+const ROLES = {
+  HD: { color:"#B8933F", profile:{con:2, str:1, mot:1, dir:4},
+    en:{ name:"Head Dispatcher", motto:"The whole map stays in your head, not the wheel.",
+      note:"You're assigned as Head Dispatcher. You set the routes, brief the chauffeurs, and keep the whole transport operation running from a step back — coordinating rather than driving it yourself. When something goes wrong out on the road, the assistants handle it; your job is making sure it never gets that far in the first place.",
+      personality:"You tend to think in systems rather than single tasks — solving the whole plan before the problem even happens is more satisfying to you than reacting to it in the moment. You don't need to be the one holding the wheel to feel like you're the one actually driving things." },
+    th:{ name:"Head Dispatcher", motto:"The whole map stays in your head, not the wheel.",
+      note:"คุณได้รับมอบหมายให้เป็นหัวหน้าฝ่ายจัดรถ คุณกำหนดเส้นทาง ชี้แจงงานให้คนขับ และดูแลการเดินรถทั้งหมดโดยไม่ต้องลงมือเอง คุณทำหน้าที่ประสานงานมากกว่าขับเอง เมื่อมีปัญหาเกิดขึ้นบนถนน ผู้ช่วยของคุณจะเป็นคนจัดการ ส่วนหน้าที่ของคุณคือทำให้เรื่องไม่ลุกลามกลหนไปถึงจุดนั้นตั้งแต่แรก",
+      personality:"คุณมักคิดเป็นระบบมากกว่ามองเป็นงานย่อย ๆ การวางแผนให้เรียบร้อยก่อนที่ปัญหาจะเกิดขึ้นทำให้คุณสบายใจมากกว่าการแก้ไขเฉพาะหน้า คุณไม่จำเป็นต้องเป็นคนจับพวงมาลัยเองก็รู้สึกเหมือนเป็นคนคุมทิศทางอยู่ดี" } },
+  AD: { color:"#D4B05E", profile:{con:3, str:1, mot:4, dir:1},
+    en:{ name:"Assistant Dispatcher", motto:"Every route has already been driven in your head.",
+      note:"You're assigned as Assistant Dispatcher. You're the one actually out there — prepping vehicles, running the routes between the airport and the convention centre, and dealing directly with chauffeurs and travelers on the ground. The Head Dispatcher sets the plan; you're the reason it survives contact with Bangkok traffic.",
+      personality:"You'd rather be moving than waiting around for instructions on what to do next. Hand you a plan and you'll run with it yourself, adjusting on the fly rather than checking back in every time something shifts." },
+    th:{ name:"Assistant Dispatcher", motto:"Every route has already been driven in your head.",
+      note:"คุณได้รับมอบหมายให้เป็นผู้ช่วยฝ่ายจัดรถ คุณคือคนที่ลงพื้นที่จริง เตรียมรถที่วิ่งตามเส้นทางระหว่างสนามบินกับศูนย์ประชุม และติดต่อกับคนขับรวมถึงผู้เดินทางโดยตรง หัวหน้าฝ่ายจัดรถเป็นคนวางแผน แต่คุณคือเหตุผลที่แผนนั้นรอดพ้นจากการจราจรกรุงเทพฯ ได้จริง",
+      personality:"คุณชอบลงมือเคลื่อนไหวมากกว่ายืนรอคำสั่งว่าต้องทำอะไรต่อ ถ้าได้รับแผนมาคุณจะลงมือทำเองเลย คุณสามารถปรับเปลี่ยนไปตามสถานการณ์โดยไม่ต้องกลับไปถามซ้ำทุกครั้งที่มีอะไรเปลี่ยน" } },
+  BH: { color:"#8B7A5E", profile:{con:0, str:0, mot:2, dir:0},
+    en:{ name:"Bindery Helper", motto:"Every document leaves your desk exactly right.",
+      note:"You're assigned to the Bindery. You work quietly alongside the Documents & Records Officer and the Print Shop Supervisor, prepping and assembling the paperwork the whole meeting runs on. Not flashy work, but a jammed press or a missing file becomes everyone's problem — and you're the reason it doesn't.",
+      personality:"You don't need the spotlight or the credit — getting it exactly right, quietly, is its own reward. You're comfortable following someone else's system instead of reinventing it yourself, and you'd rather redo something once than have to explain it twice." },
+    th:{ name:"Bindery Helper", motto:"Every document leaves your desk exactly right.",
+      note:"คุณได้รับมอบหมายให้ประจำฝ่ายเข้าเล่มเอกสาร คุณทำงานเงียบ ๆ ร่วมกับเจ้าหน้าที่ฝ่ายเอกสารและบันทึกและหัวหน้าฝ่ายโรงพิมพ์ในการเตรียมและรวบรวมเอกสารทั้งหมดที่การประชุมต้องใช้ มันอาจจะไม่ใช่งานที่หวือหวา แต่ถ้าระบบติดขัดหรือเอกสารหายไป มันจะกลายเป็นปัญหาของทุกคน ซึ่งคุณคือเหตุผลที่มันไม่เกิดขึ้น",
+      personality:"คุณไม่ต้องการแสงสปอตไลต์หรือคำชม การทำให้ถูกต้องเป๊ะอย่างเงียบ ๆ ก็เป็นรางวัลในตัวมันเองแล้ว คุณสบายใจที่จะทำตามระบบที่มีไว้อยู่เเล้วมากกว่าการคิดค้นระบบใหม่เอง คุณยอมทำซ้ำสักครั้งดีกว่าต้องมานั่งอธิบายให้ผู้อื่นฟังซ้ำๆ" } },
+  HA: { color:"#A65B5B", profile:{con:2, str:1, mot:0, dir:1},
+    en:{ name:"Hotel Accommodation", motto:"The phone gets answered on the first ring.",
+      note:"You're assigned to Hotel Accommodation. Calls, typing, general office work, long hours — you keep it all moving without complaint. Delegates never see this desk, but they'd notice immediately if it stopped working.",
+      personality:"You're steady rather than spontaneous — you'd rather have a clear routine to lean on than figure things out fresh every single time. Long, repetitive hours don't wear on you the way they would on someone who needs constant novelty to stay interested." },
+    th:{ name:"Hotel Accommodation", motto:"The phone gets answered on the first ring.",
+      note:"คุณได้รับมอบหมายให้ประจำฝ่ายที่พักโรงแรม รับโทรศัพท์ พิมพ์งาน งานออฟฟิศทั่วไป ชั่วโมงทำงานของคุณยาวนาน เเต่คุณทำทุกอย่างให้เดินหน้าต่อไปโดยไม่บ่น คณะผู้แทนอาจไม่ได้เห็นงานของคุณ แต่ถ้าคุณหายไป พวกเขาจะรู้สึกได้ทันที",
+      personality:"คุณเป็นคนที่ชอบความสม่ำเสมอมากกว่าความฉับพลัน คุณชอบมีกิจวัตรที่ชัดเจนให้ยึดมากกว่าต้องคิดใหม่ทุกครั้ง ชั่วโมงทำงานที่ยาวนานและซ้ำ ๆ ไม่ทำให้คุณเหนื่อยล้าเหมือนคนที่ต้องการความแปลกใหม่ตลอดเวลาเพื่อให้สนใจงานต่อไปได้" } },
+  MA: { color:"#3E7C74", profile:{con:2, str:1, mot:4, dir:0},
+    en:{ name:"Meeting Room Arrangement", motto:"The room is ready before anyone asks.",
+      note:"You're assigned to Meeting Room Arrangement. You keep the rooms clean, properly set, and looking the part — and when someone leans over to ask about procedure, you already know the answer. Order, kept quietly.",
+      personality:"You notice the small things other people walk straight past — a chair out of line, a smudge on the table — and you fix it without being asked. You'd rather be doing something with your hands than sitting still waiting to be told what's next." },
+    th:{ name:"Meeting Room Arrangement", motto:"The room is ready before anyone asks.",
+      note:"คุณได้รับมอบหมายให้ประจำฝ่ายจัดเตรียมห้องประชุม คุณดูแลให้ห้องสะอาด จัดวางถูกต้อง และดูดีอยู่เสมอ และเมื่อมีใครเอียงตัวมาถามเรื่องขั้นตอน คุณก็มีคำตอบพร้อมอยู่แล้ว คุณให้ความสำคัญกับความเป็นระเบียบที่ถูกดูแลอย่างเงียบ ๆ",
+      personality:"คุณสังเกตเห็นเรื่องเล็ก ๆ ที่คนอื่นเดินผ่านไปโดยไม่ทันสังเกต เช่นเก้าอี้เอียงนิดหน่อยหรือรอยเปื้อนบนโต๊ะ แล้วก็แก้ไขมันโดยไม่ต้องมีใครบอก คุณชอบลงมือทำอะไรสักอย่างมากกว่านั่งเฉย ๆ รอให้มีคนบอกว่าต้องทำอะไรต่อ" } },
+  US: { color:"#7A2338", profile:{con:4, str:3, mot:4, dir:1},
+    en:{ name:"Meeting Room Usher", motto:"Nobody gets lost on your watch.",
+      note:"You're assigned to the Usher corps. You're the one guiding delegates to their seats, keeping the plenary hall calm and orderly, and doing it with a pleasant, unbothered face — even on your fifth irregular-hours shift in a row. People remember a good usher more than they'd admit.",
+      personality:"You read a room fast, and you're comfortable being the calm one when everyone else is a little lost or in a hurry. Staying pleasant under mild chaos isn't a performance for you — it's just how you naturally operate." },
+    th:{ name:"Meeting Room Usher", motto:"Nobody gets lost on your watch.",
+      note:"คุณได้รับมอบหมายให้เป็นพนักงานนำที่นั่ง คุณคือคนที่พาคณะผู้แทนไปยังที่นั่ง ดูแลให้ห้องประชุมใหญ่สงบเรียบร้อย และทำทั้งหมดนี้ด้วยสีหน้ายิ้มแย้มไม่แสดงความเหนื่อยล้า แม้จะเป็นกะทำงานนอกเวลาปกติติดต่อกันเป็นครั้งที่ห้าแล้วก็ตาม คนมักจดจำพนักงานนำที่นั่งที่ดีได้มากกว่าที่พวกเขาจะยอมรับ",
+      personality:"คุณอ่านสถานการณ์ในห้องได้เร็ว และรู้สึกสบายใจที่จะเป็นคนใจเย็นในตอนที่คนอื่นเริ่มหลงทางหรือรีบร้อน การรักษาความยิ้มแย้มท่ามกลางความวุ่นวายเล็กน้อยไม่ใช่การแสดงสำหรับคุณ แต่มันคือธรรมชาติของคุณเอง" } },
+  RR: { color:"#43507A", profile:{con:0, str:1, mot:1, dir:3},
+    en:{ name:"Radio Recording", motto:"If it was said in that room, you have it on tape.",
+      note:"You're assigned to Radio Recording. Headphones on, equipment checked twice, capturing the event as it actually happened. A quiet post, but an important one — a broken recorder is a much bigger problem than a broken pen.",
+      personality:"You'd rather be the one quietly making sure something works than the one everyone's watching. Left alone with a task and the right equipment, you don't need much oversight to get it right — you'd almost prefer it that way." },
+    th:{ name:"Radio Recording", motto:"If it was said in that room, you have it on tape.",
+      note:"คุณได้รับมอบหมายให้ประจำฝ่ายบันทึกเสียงวิทยุ สวมหูฟัง ตรวจสอบอุปกรณ์อย่างรอบคอบ บันทึกเหตุการณ์ตามที่เกิดขึ้นจริง เป็นตำแหน่งที่เงียบแต่สำคัญ เพราะหากเครื่องบันทึกเสียงเสียเป็นปัญหาใหญ่กว่าปากกาเสียมากนัก",
+      personality:"คุณอยากเป็นคนที่คอยดูแลให้ทุกอย่างทำงานได้อย่างเงียบ ๆ มากกว่าเป็นคนที่ทุกคนจับตามอง หากปล่อยให้คุณทำงานพร้อมอุปกรณ์ที่เหมาะสม คุณไม่จำเป็นต้องมีใครคอยดูแลใกล้ชิดก็ทำได้ถูกต้องและแทบจะชอบแบบนั้นมากกว่าด้วยซ้ำ" } },
+  SR: { color:"#C1752B", profile:{con:4, str:2, mot:1, dir:3},
+    en:{ name:"Senior Receptionist", motto:"Every question gets a straight answer, even the fifth time.",
+      note:"You're assigned as Senior Receptionist. Inquiries, attendance reports, the occasional frustrated delegate — you handle it all courteously, accurately, and without visibly breaking a sweat. Pressure doesn't rattle you; it just becomes another thing on the list.",
+      personality:"Pressure doesn't really throw you — if anything, you get steadier, not more frazzled, when things pick up. You can give the same explanation for the fifth time today and still sound like it's the first." },
+    th:{ name:"Senior Receptionist", motto:"Every question gets a straight answer, even the fifth time.",
+      note:"คุณได้รับมอบหมายให้เป็นพนักงานต้อนรับอาวุโส คำถาม รายงานการเข้าร่วมประชุม คณะผู้แทนที่บางครั้งหงุดหงิด คุณจัดการทั้งหมดนี้ด้วยความสุภาพ ถูกต้อง แม่นยำ โดยไม่แสดงความตื่นตระหนกให้เห็น ความกดดันไม่ทำให้คุณสั่นคลอน มันเป็นแค่กิจวัตรในงานที่คุ้นเคย",
+      personality:"ความกดดันไม่ค่อยทำให้คุณเสียศูนย์เเต่กลับทำให้คุณมั่นคงขึ้นแทนที่จะยุ่งเหยิงเมื่อสถานการณ์เร่งรีบขึ้น คุณสามารถอธิบายเรื่องเดิมซ้ำเป็นครั้งที่ห้าในวันนั้นได้ และยังฟังดูเหมือนเป็นครั้งแรกอยู่ดี" } },
+  MS: { color:"#6B7A3D", profile:{con:1, str:1, mot:4, dir:0},
+    en:{ name:"Messenger", motto:"It gets there. That's the whole job.",
+      note:"You're assigned as Messenger. Mail, documents, urgent notes between desks that don't have time to wait — you're the one covering the distance, for as long as the day requires. Simple job, but the whole event runs on it moving fast.",
+      personality:"You'd rather be told where to go than have to think hard about what to do once you're there — simple, physical tasks suit you better than ones that need constant judgment calls. Sitting still for long stretches is harder for you than moving fast for long ones." },
+    th:{ name:"Messenger", motto:"It gets there. That's the whole job.",
+      note:"คุณได้รับมอบหมายให้เป็นพนักงานส่งเอกสาร จดหมาย เอกสาร ข้อความด่วนระหว่างโต๊ะที่รอไม่ได้ คุณคือคนที่วิ่งระยะทางเหล่านั้น นานเท่าที่วันนั้นต้องการ งานของคุณเรียบง่าย แต่ทั้งการประชุมเดินหน้าต่อไปได้ก็เพราะคุณเคลื่อนที่เร็ว",
+      personality:"คุณอยากถูกบอกว่าต้องไปที่ไหนมากกว่าต้องมานั่งคิดหนักว่าต้องทำอะไรเมื่อไปถึง งานที่เรียบง่ายและใช้แรงกายเหมาะกับคุณมากกว่างานที่ต้องตัดสินใจตลอดเวลา การนั่งนิ่ง ๆ นาน ๆ ยากสำหรับคุณมากกว่าการเคลื่อนไหวเร็ว ๆ เป็นเวลานาน" } },
+  IC: { color:"#1F3A5F", profile:{con:4, str:2, mot:1, dir:1},
+    en:{ name:"Information Clerk", motto:"You already know the answer before they finish asking.",
+      note:"You're assigned to the Information desk. Attendees come to you first, in whichever language they arrive in, and you're expected to have the correct answer, reliably, under pressure, with a straight face. If you speak more than one language, this is where it gets used most.",
+      personality:"You like having the right answer ready before someone's even finished asking the question. You're more patient with repetition than most people are, and you don't mind that the job rewards being reliable over being in charge." },
+    th:{ name:"Information Clerk", motto:"You already know the answer before they finish asking.",
+      note:"คุณได้รับมอบหมายให้ประจำโต๊ะประชาสัมพันธ์ข้อมูล ผู้เข้าร่วมประชุมมาหาคุณเป็นคนแรก ไม่ว่าจะพูดภาษาอะไร และคุณถูกคาดหวังให้มีคำตอบที่ถูกต้องเเละเชื่อถือได้แม้ในยามกดดันโดยไม่แสดงสีหน้า ถ้าคุณพูดได้มากกว่าหนึ่งภาษานี่คือที่ที่มันถูกใช้มากที่สุด",
+      personality:"คุณชอบมีคำตอบที่ถูกต้องพร้อมอยู่แล้วก่อนที่ใครจะถามจบด้วยซ้ำ คุณอดทนกับการถูกถามซ้ำ ๆ ได้มากกว่าคนทั่วไป และไม่รู้สึกแย่ที่งานนี้ให้คุณค่ากับความน่าเชื่อถือมากกว่าอำนาจในการตัดสินใจ" } },
+  PR: { color:"#33363B", profile:{con:0, str:0, mot:2, dir:2},
+    en:{ name:"Procurement", motto:"Nothing leaves the stockroom unaccounted for.",
+      note:"You're assigned to Procurement. Supplies in, supplies out, every item checked and logged — you're the quiet reason nobody runs out of paper on day three. Not a glamorous post, but the whole convention's small details rest on it being done right.",
+      personality:"You'd rather things be counted and correct than fast and messy. Nobody needs to check your work behind you — you'd already have noticed the discrepancy before anyone else thought to look for one." },
+    th:{ name:"Procurement", motto:"Nothing leaves the stockroom unaccounted for.",
+      note:"คุณได้รับมอบหมายให้ประจำฝ่ายจัดซื้อและพัสดุ ของเข้า ของออก ทุกชิ้นถูกตรวจสอบและบันทึกไว้โดยคุณ คุณคือเหตุผลเงียบ ๆ ที่ทำให้ไม่มีใครกระดาษหมดในวันที่สาม มันไม่ใช่ตำแหน่งที่หรูหรา แต่รายละเอียดเล็ก ๆ ทั้งหมดของงานประชุมขึ้นอยู่กับการทำสิ่งนี้ให้ถูกต้อง",
+      personality:"คุณอยากให้ทุกอย่างถูกนับและถูกต้องมากกว่าจะรวดเร็วแต่ยุ่งเหยิง ไม่มีใครต้องมาตรวจงานคุณซ้ำ เพราะคุณสังเกตเห็นความสิ่งที่ต้องเตรียมพร้อมไปแล้วก่อนที่ใครจะคิดจะมองหาด้วยซ้ำ" } },
+  AR: { color:"#6B4472", profile:{con:4, str:1, mot:1, dir:0},
+    en:{ name:"Airport Receptionist", motto:"The first face they see is the impression that sticks.",
+      note:"You're assigned to Airport Reception. You're the very first point of contact — meeting delegations as they land and guiding them smoothly onward, closely following protocol and supervision the whole way.",
+      personality:"First impressions matter to you more than most people even realize consciously — you naturally read how put-together a moment calls for and adjust to it. You're comfortable following a script closely rather than improvising your own version of it." },
+    th:{ name:"Airport Receptionist", motto:"The first face they see is the impression that sticks.",
+      note:"คุณได้รับมอบหมายให้ประจำฝ่ายต้อนรับสนามบิน คุณคือจุดสัมผัสแรกสุด งานของคุณคือหารต้อนรับคณะผู้แทนตอนที่เครื่องลงจอดและนำทางต่อไปอย่างราบรื่น โดยปฏิบัติตามระเบียบและการดูแลอย่างใกล้ชิดตลอดเวลา",
+      personality:"ความประทับใจแรกพบมีความหมายกับคุณมากกว่าที่คนส่วนใหญ่จะรู้ตัวด้วยซ้ำ คุณอ่านออกโดยธรรมชาติว่าแต่ละสถานการณ์ต้องการความเรียบร้อยแค่ไหน และปรับตัวตามนั้น คุณสบายใจที่จะทำตามขั้นตอนที่วางไว้อย่างใกล้ชิด มากกว่าจะแสดงสดในแบบของตัวเอง" } },
+  SC: { color:"#5B7065", profile:{con:3, str:1, mot:0, dir:1},
+    en:{ name:"Secretary", motto:"Every call answered, every letter typed, before anyone has to ask twice.",
+      note:"You're assigned as Secretary to a visiting delegation's office. Phones, correspondence, the fax machine, and whatever else falls under 'other duties as assigned' — reliable and accurate, with enough knowledge of the city to steer staff and visitors right, and always good for a bit of overtime.",
+      personality:"You keep a lot of small moving parts organized in your head without needing to write all of it down first. You don't mind being the person behind the person — making someone else's day run smoothly is satisfying in its own right." },
+    th:{ name:"Secretary", motto:"Every call answered, every letter typed, before anyone has to ask twice.",
+      note:"คุณได้รับมอบหมายให้เป็นเลขานุการประจำสำนักงานของคณะผู้แทนที่มาเยือน โทรศัพท์ จดหมายโต้ตอบ เครื่องแฟกซ์ และงานอื่น ๆ ถูกดูเเลโดยคุณด้วยน่าเชื่อถือและแม่นยำ คุณพร้อมด้วยความรู้เรื่องเมืองมากพอที่จะนำทางเจ้าหน้าที่และผู้มาเยือนได้ถูกต้อง และพร้อมทำงานล่วงเวลาเสมอ",
+      personality:"คุณจัดระเบียบรายละเอียดเล็ก ๆ น้อย ๆ จำนวนมากไว้ในหัวได้โดยไม่ต้องจดทุกอย่างลงก่อน คุณไม่รังเกียจที่จะเป็นคนที่อยู่เบื้องหลังคนอื่น เเละการทำให้วันของคนอื่นราบรื่นก็เป็นความพึงพอใจในตัวมันเองอยู่แล้ว" } }
+};
+
+const QUESTIONS = [
+  { axis:"con", text:{en:"It's Songkran and your soi is throwing its yearly water fight. Who are you?", th:"ช่วงสงกรานต์ ซอยของคุณกำลังจัดงานสาดน้ำประจำปี คุณเป็นแบบไหน?"},
+    options:[
+      { v:2, label:{en:"Right at the gate, dousing every car and scooter that passes, chatting with whoever gets soaked", th:"ยืนอยู่หน้าปากซอย สาดน้ำใส่รถและมอเตอร์ไซค์ทุกคันที่ผ่านมา พร้อมคุยกับคนที่โดนสาด"} },
+      { v:1, label:{en:"Helping fill the buckets and joining in, mostly with people you already know", th:"ช่วยตักน้ำใส่ถังและร่วมเล่นด้วย ส่วนใหญ่กับคนที่รู้จักกันอยู่แล้ว"} },
+      { v:-1, label:{en:"Watching from the balcony, sending down water refills when someone shouts up", th:"นั่งดูอยู่บนระเบียง ส่งน้ำลงไปเติมเมื่อมีคนตะโกนขอ"} },
+      { v:-2, label:{en:"Inside with the AC on, coming out only once it's basically over", th:"อยู่ในบ้านเปิดแอร์เย็นฉ่ำ ออกมาก็ตอนที่งานใกล้จะเลิกแล้ว"} }
+    ]},
+  { axis:"con", text:{en:"On the BTS, a tourist is holding a map upside down and looking completely lost. You:", th:"บนรถไฟฟ้า BTS นักท่องเที่ยวคนหนึ่งถือแผนที่กลับหัวและดูหลงทางสุด ๆ คุณจะ:"},
+    options:[
+      { v:2, label:{en:"Walk over, show them the way, maybe even walk part of it with them", th:"เดินไปช่วยบอกทาง อาจจะเดินไปส่งบางช่วงด้วยเลย"} },
+      { v:1, label:{en:"Point at the map and answer their question kindly", th:"ชี้ตรงแผนที่และตอบคำถามด้วยความเป็นมิตร"} },
+      { v:-1, label:{en:"Nod toward the platform sign and go back to your phone", th:"พยักหน้าชี้ไปทางป้ายชานชาลา แล้วก้มดูมือถือต่อ"} },
+      { v:-2, label:{en:"Assume someone else will help — starting the conversation isn't really you", th:"คิดว่าคงมีคนอื่นช่วย การเริ่มบทสนทนาแบบนี้ไม่ใช่ตัวคุณเท่าไหร่"} }
+    ]},
+  { axis:"con", text:{en:"Big Sunday lunch with the whole extended family. Where do you naturally end up?", th:"มื้อเที่ยงวันอาทิตย์ใหญ่กับญาติพี่น้องทั้งหมด สุดท้ายแล้วคุณมักจะอยู่ตรงไหน?"},
+    options:[
+      { v:2, label:{en:"At the head of the table, catching up with every aunt and uncle in turn", th:"หัวโต๊ะ คุยไถ่ถามสารทุกข์สุกดิบกับป้าน้าอาทุกคนทีละคน"} },
+      { v:1, label:{en:"Chatting happily with whoever's sitting near you", th:"คุยสนุกกับใครก็ตามที่นั่งอยู่ใกล้ ๆ"} },
+      { v:-1, label:{en:"In the kitchen helping out, half-listening to the conversation", th:"อยู่ในครัวช่วยงาน ฟังบทสนทนาไปด้วยครึ่ง ๆ กลาง ๆ"} },
+      { v:-2, label:{en:"On your phone in the corner, until someone calls your name directly", th:"นั่งเล่นมือถืออยู่มุมห้อง จนกว่าจะมีใครเรียกชื่อตรง ๆ"} }
+    ]},
+  { axis:"con", text:{en:"At a big wedding reception, the microphone opens up for anyone to give a toast. You:", th:"ในงานเลี้ยงแต่งงานใหญ่ พิธีกรเปิดไมค์ให้ใครก็ได้ขึ้นมากล่าวอวยพร คุณจะ:"},
+    options:[
+      { v:2, label:{en:"Grab it and give an off-the-cuff toast to the whole room", th:"คว้าไมค์มาแล้วกล่าวอวยพรสด ๆ ให้ทั้งงาน"} },
+      { v:1, label:{en:"Say a quick word if directly asked, but keep it short", th:"พูดสั้น ๆ ถ้าถูกขอให้พูดตรง ๆ แต่ไม่ยาว"} },
+      { v:-1, label:{en:"Clap along, maybe compliment the couple quietly afterward", th:"ปรบมือไปด้วย แล้วอาจไปชมคู่บ่าวสาวเบา ๆ ทีหลัง"} },
+      { v:-2, label:{en:"Hope nobody makes eye contact with you holding that mic", th:"ภาวนาไม่ให้ใครสบตา หลีกเลี่ยงการถูกยื่นไมค์มาให้"} }
+    ]},
+  { axis:"con", text:{en:"Your neighborhood is organizing a community clean-up day. What's your role, naturally?", th:"ชุมชนของคุณกำลังจัดวันทำความสะอาดส่วนรวม โดยธรรมชาติแล้วคุณจะรับบทบาทไหน?"},
+    options:[
+      { v:2, label:{en:"Going door to door getting people to join in", th:"เดินเคาะประตูบ้านทีละหลังชวนคนมาร่วม"} },
+      { v:1, label:{en:"Working alongside whoever else showed up, chatting as you go", th:"ลงมือทำงานร่วมกับคนที่มา พร้อมคุยไปด้วย"} },
+      { v:-1, label:{en:"Doing your section quietly, on your own", th:"ทำงานในส่วนของตัวเองเงียบ ๆ คนเดียว"} },
+      { v:-2, label:{en:"You'd rather just donate some money and skip the event itself", th:"ขอบริจาคเงินแทนดีกว่า แล้วข้ามงานนี้ไปเลย"} }
+    ]},
+  { axis:"str", text:{en:"Planning a long weekend trip to see relatives in Khon Kaen. Your itinerary looks like:", th:"วางแผนไปเที่ยวยาว ๆ เยี่ยมญาติที่ขอนแก่น กำหนดการของคุณจะเป็นแบบไหน?"},
+    options:[
+      { v:-2, label:{en:"A full schedule — departure time, rest stops, arrival time, all fixed", th:"ตารางเต็มรูปแบบ  เวลาออกเดินทาง จุดแวะพัก เวลาถึง กำหนดไว้หมดแล้ว"} },
+      { v:-1, label:{en:"A rough plan with the important stops marked, flexible in between", th:"แผนคร่าว ๆ มีจุดสำคัญทำเครื่องหมายไว้ ที่เหลือยืดหยุ่นได้"} },
+      { v:1, label:{en:"Just a destination — the rest gets figured out on the road", th:"รู้แค่ปลายทาง ที่เหลือค่อยคิดกันระหว่างทาง"} },
+      { v:2, label:{en:"Whatever feels right when you wake up that morning", th:"แล้วแต่ความรู้สึกตอนตื่นนอนเช้าวันนั้นเลย"} }
+    ]},
+  { axis:"str", text:{en:"You're making your grandmother's pad kra pao recipe. What actually happens?", th:"คุณกำลังทำผัดกะเพราสูตรคุณยาย จริง ๆ แล้วมันออกมาเป็นแบบไหน?"},
+    options:[
+      { v:-2, label:{en:"Exact measurements, same as the handwritten recipe card, every time", th:"ตวงส่วนผสมเป๊ะ ๆ เหมือนในสูตรลายมือคุณยายทุกครั้ง"} },
+      { v:-1, label:{en:"Roughly the recipe, maybe adjusted slightly for what's in the fridge", th:"ตามสูตรคร่าว ๆ อาจปรับนิดหน่อยตามที่มีอยู่ในตู้เย็น"} },
+      { v:1, label:{en:"Taste as you go and adjust until it feels right", th:"ชิมไปทำไป ปรับจนกว่าจะรู้สึกว่าใช่"} },
+      { v:2, label:{en:"The recipe's a suggestion — today it might turn into something else entirely", th:"สูตรเป็นแค่แนวทาง วันนี้อาจกลายเป็นเมนูอื่นไปเลยก็ได้"} }
+    ]},
+  { axis:"str", text:{en:"It starts pouring rain right as you're about to leave for a friend's birthday dinner. You:", th:"ฝนตกหนักพอดีตอนที่คุณกำลังจะออกไปงานวันเกิดเพื่อน คุณจะ:"},
+    options:[
+      { v:-2, label:{en:"Already checked the forecast this morning, brought an umbrella, unbothered", th:"เช็กพยากรณ์อากาศไว้ตั้งแต่เช้า พกร่มมาแล้ว ไม่ต้องกังวล"} },
+      { v:-1, label:{en:"A little annoyed, but you already had a backup plan ready", th:"หงุดหงิดนิดหน่อย แต่มีแผนสำรองเตรียมไว้อยู่แล้ว"} },
+      { v:1, label:{en:"Shrug, throw on a rain jacket, figure it out as you go", th:"ยักไหล่ หยิบเสื้อกันฝนมาสวม แล้วค่อยคิดหน้างาน"} },
+      { v:2, label:{en:"Kind of enjoy the chaos of everyone scrambling for cover together", th:"แอบสนุกกับความวุ่นวายตอนทุกคนวิ่งหาที่หลบฝนด้วยกัน"} }
+    ]},
+  { axis:"str", text:{en:"It's your turn to organize the family's Chinese New Year dinner. What happens?", th:"ถึงตาคุณจัดมื้อค่ำวันตรุษจีนของครอบครัวแล้ว จะเกิดอะไรขึ้น?"},
+    options:[
+      { v:-2, label:{en:"Same menu, same seating, same order as every year — tradition, exactly", th:"เมนูเดิม ที่นั่งเดิม ลำดับเดิมเหมือนทุกปี ตามธรรมเนียมเป๊ะ ๆ"} },
+      { v:-1, label:{en:"Mostly the same, with one or two small tweaks", th:"ส่วนใหญ่เหมือนเดิม มีปรับนิดหน่อยหนึ่งหรือสองอย่าง"} },
+      { v:1, label:{en:"A rough plan, but half the dishes get decided that morning at the market", th:"มีแผนคร่าว ๆ แต่ครึ่งหนึ่งของเมนูค่อยตัดสินใจตอนไปตลาดเช้าวันนั้น"} },
+      { v:2, label:{en:"Whoever shows up and whatever's fresh at the market decides the whole meal", th:"ใครมาก็มา มีของสดอะไรที่ตลาดก็ทำเมนูนั้นไปเลยทั้งหมด"} }
+    ]},
+  { axis:"str", text:{en:"Your motorbike taxi driver takes an unexpected shortcut through a soi you don't recognize. Your reaction:", th:"คนขับวินมอเตอร์ไซค์พาคุณลัดเข้าซอยที่ไม่คุ้นเคยแบบไม่ทันตั้งตัว ปฏิกิริยาของคุณคือ:"},
+    options:[
+      { v:-2, label:{en:"Slight panic — that wasn't the route you agreed on", th:"แอบตกใจนิดหน่อย นี่ไม่ใช่เส้นทางที่ตกลงกันไว้"} },
+      { v:-1, label:{en:"A bit uneasy, but you check the map to confirm it's still heading the right way", th:"รู้สึกไม่ค่อยแน่ใจ เลยเช็กแผนที่ดูว่ายังไปถูกทาง"} },
+      { v:1, label:{en:"Don't think twice, they clearly know a faster way", th:"ไม่คิดมาก เขาต้องรู้ทางลัดที่เร็วกว่าแน่ ๆ"} },
+      { v:2, label:{en:"Kind of enjoy discovering a new corner of the neighborhood by accident", th:"แอบสนุกที่ได้เจอมุมใหม่ ๆ ของย่านนี้แบบไม่ตั้งใจ"} }
+    ]},
+  { axis:"mot", text:{en:"Ideal Saturday:", th:"วันเสาร์ในฝันของคุณ:"},
+    options:[
+      { v:-2, label:{en:"A coffee shop, a book, and not moving for three hours", th:"ร้านกาแฟ หนังสือสักเล่ม และนั่งเฉย ๆ ไม่ขยับไปไหนสามชั่วโมง"} },
+      { v:-1, label:{en:"A slow walk around a market, sitting down often", th:"เดินเล่นเรื่อย ๆ ในตลาด นั่งพักบ่อย ๆ"} },
+      { v:1, label:{en:"A few hours wandering Chatuchak, on your feet the whole time", th:"เดินเที่ยวจตุจักรหลายชั่วโมง ยืนเดินตลอดเวลา"} },
+      { v:2, label:{en:"A full day out — market, temple, a hike — back on your feet before you've even sat down from the last thing", th:"ออกไปทั้งวัน เช่น ตลาด วัด เดินป่า ยังไม่ทันได้นั่งพักจากอย่างก่อนก็ลุกไปต่อแล้ว"} }
+    ]},
+  { axis:"mot", text:{en:"At a temple fair (งานวัด), what are you doing by 9pm?", th:"ที่งานวัด พอถึงสามทุ่ม คุณกำลังทำอะไรอยู่?"},
+    options:[
+      { v:-2, label:{en:"Sitting at the same food stall table since you arrived", th:"นั่งอยู่ที่โต๊ะร้านอาหารเดิมตั้งแต่มาถึง"} },
+      { v:-1, label:{en:"Walked around once, found a good spot, mostly staying put now", th:"เดินดูรอบงานรอบหนึ่งแล้ว เจอจุดที่ถูกใจ ตอนนี้อยู่กับที่เป็นส่วนใหญ่"} },
+      { v:1, label:{en:"Still wandering, checking every stall, on your third lap", th:"ยังเดินดูอยู่ ส่องทุกร้าน รอบที่สามแล้ว"} },
+      { v:2, label:{en:"Somehow ended up helping carry things for one of the stall owners", th:"ไม่รู้ทำไมกลายเป็นช่วยแม่ค้าคนหนึ่งยกของไปแล้ว"} }
+    ]},
+  { axis:"mot", text:{en:"Someone offers you a part-time weekend job. Which one do you actually pick?", th:"มีคนเสนองานพาร์ทไทม์วันเสาร์อาทิตย์ให้ คุณจะเลือกงานไหน?"},
+    options:[
+      { v:-2, label:{en:"Sitting at a cash register in an air-conditioned shop", th:"นั่งแคชเชียร์ในร้านที่เปิดแอร์เย็นสบาย"} },
+      { v:-1, label:{en:"Helping arrange stock on shelves, some walking involved", th:"ช่วยจัดของขึ้นชั้น มีเดินไปมาบ้าง"} },
+      { v:1, label:{en:"Delivering food by motorbike around the neighborhood", th:"ขับมอเตอร์ไซค์ส่งอาหารไปทั่วละแวกบ้าน"} },
+      { v:2, label:{en:"Running food and drinks table-to-table at a busy street stall all night", th:"วิ่งเสิร์ฟอาหารเครื่องดื่มตามโต๊ะที่ร้านข้างทางคึกคักทั้งคืน"} }
+    ]},
+  { axis:"mot", text:{en:"It's the start of Buddhist Lent and there's a candle procession (เวียนเทียน) at the local temple. You:", th:"เป็นวันเข้าพรรษาและมีการเวียนเทียนที่วัดใกล้บ้าน คุณ:"},
+    options:[
+      { v:-2, label:{en:"Watch from a chair near the entrance, candle in hand", th:"นั่งดูอยู่บนเก้าอี้ใกล้ทางเข้า ถือเทียนอยู่ในมือ"} },
+      { v:-1, label:{en:"Walk the procession once around, then find a seat", th:"เวียนเทียนรอบหนึ่งแล้วก็หาที่นั่ง"} },
+      { v:1, label:{en:"Walk the full procession, chatting and moving with the crowd", th:"เวียนเทียนจนครบ พร้อมคุยและเดินไปกับฝูงชน"} },
+      { v:2, label:{en:"End up helping guide the procession or handing out candles as you walk", th:"กลายเป็นคนช่วยนำเวียนเทียนหรือแจกเทียนไปด้วยระหว่างเดิน"} }
+    ]},
+  { axis:"mot", text:{en:"Given a free Sunday with nothing planned, you're more likely to:", th:"มีวันอาทิตย์ว่าง ๆ ไม่ได้วางแผนอะไรไว้ คุณน่าจะ:"},
+    options:[
+      { v:-2, label:{en:"Stay in bed with Netflix until noon", th:"นอนดู Netflix อยู่บนเตียงจนถึงเที่ยง"} },
+      { v:-1, label:{en:"Take a short walk to a nearby café, then head back home", th:"เดินไปร้านกาแฟใกล้ ๆ แป๊บหนึ่งแล้วกลับบ้าน"} },
+      { v:1, label:{en:"Take a motorbike out to explore somewhere new for a few hours", th:"ขับมอเตอร์ไซค์ออกไปสำรวจที่ใหม่ ๆ สักสองสามชั่วโมง"} },
+      { v:2, label:{en:"Sign up for something physical — a run, a hike, a muay thai class — without much hesitation", th:"สมัครทำกิจกรรมที่ต้องใช้แรง เช่น วิ่ง เดินป่า คลาสมวยไทย โดยไม่ลังเลมาก"} }
+    ]},
+  { axis:"dir", text:{en:"Planning a trip with friends, someone has to decide where to eat. You usually:", th:"วางแผนเที่ยวกับเพื่อน ต้องมีคนตัดสินใจว่าจะกินที่ไหน ปกติแล้วคุณจะ:"},
+    options:[
+      { v:-2, label:{en:"Wait for someone else to suggest a place and go along with it", th:"รอให้คนอื่นเสนอที่มา แล้วก็ตามนั้น"} },
+      { v:-1, label:{en:"Offer an opinion if asked, but don't push it", th:"ให้ความเห็นถ้ามีคนถาม แต่ไม่ยัดเยียด"} },
+      { v:1, label:{en:"Just pick a place and tell everyone where to meet", th:"เลือกร้านเองแล้วบอกทุกคนว่านัดเจอกันที่ไหน"} },
+      { v:2, label:{en:"End up organizing the whole day — restaurant, transport, timing, all of it", th:"เป็นคนจัดเเผนการทั้งวัน ร้านอาหาร การเดินทาง เวลา ทุกอย่าง"} }
+    ]},
+  { axis:"dir", text:{en:"Your family's Songkran gathering needs someone to run it this year. What's your instinct?", th:"งานสงกรานต์รวมญาติปีนี้ต้องมีคนดูแลจัดการ สัญชาตญาณของคุณคือ?"},
+    options:[
+      { v:-2, label:{en:"Let whoever always does it, do it again", th:"ปล่อยให้คนที่ทำอยู่ทุกปีทำต่อไปเหมือนเดิม"} },
+      { v:-1, label:{en:"Help with a task if someone tells you what's needed", th:"ช่วยทำงานบางอย่างถ้ามีคนบอกว่าต้องการอะไร"} },
+      { v:1, label:{en:"Take charge of one part without being asked — food, games, or music", th:"รับผิดชอบส่วนใดส่วนหนึ่งเองโดยไม่มีใครขอ เช่นอาหาร เกม หรือเพลง"} },
+      { v:2, label:{en:"End up running the whole thing and telling cousins where to stand", th:"กลายเป็นคนคุมงานทั้งหมดและบอกญาติพี่น้องว่าต้องยืนตรงไหน"} }
+    ]},
+  { axis:"dir", text:{en:"You're all lost on a back road looking for a friend's house upcountry. You:", th:"ทุกคนหลงทางอยู่บนถนนเล็ก ๆ ต่างจังหวัดขณะตามหาบ้านเพื่อน คุณ:"},
+    options:[
+      { v:-2, label:{en:"Wait for the driver to figure it out — not really your call", th:"รอให้คนขับหาทางเอง ไม่ใช่หน้าที่ตัดสินใจของคุณ"} },
+      { v:-1, label:{en:"Suggest calling the friend for directions", th:"เสนอให้โทรถามเพื่อนดูทาง"} },
+      { v:1, label:{en:"Pull out your phone and start navigating for everyone", th:"หยิบมือถือขึ้นมานำทางให้ทุกคนเอง"} },
+      { v:2, label:{en:"Take over the whole decision — argue with Google Maps if you have to", th:"รับหน้าที่ตัดสินใจเองทั้งหมด เถียงกับ Google Maps ถ้าจำเป็น"} }
+    ]},
+  { axis:"dir", text:{en:"A condo committee meeting is dragging on with no decision about the broken elevator. You:", th:"การประชุมนิติบุคคลคอนโดยืดเยื้อโดยไม่มีข้อสรุปเรื่องลิฟต์เสีย คุณ:"},
+    options:[
+      { v:-2, label:{en:"Stay quiet — it's not really your building issue to solve", th:"นั่งเงียบ ๆ ไม่ใช่เรื่องที่คุณต้องแก้ไข"} },
+      { v:-1, label:{en:"Voice an opinion when asked directly", th:"แสดงความเห็นเมื่อถูกถามตรง ๆ"} },
+      { v:1, label:{en:"Suggest a concrete plan and push for a vote right there", th:"เสนอแผนที่ชัดเจนและผลักดันให้โหวตกันตรงนั้นเลย"} },
+      { v:2, label:{en:"End up drafting the actual proposal yourself and presenting it to the committee", th:"กลายเป็นคนร่างข้อเสนอเองแล้วนำเสนอต่อคณะกรรมการ"} }
+    ]},
+  { axis:"dir", text:{en:"During Songkran, the group chat is a mess of half-plans and nobody's confirmed where to meet. You:", th:"ช่วงสงกรานต์ กลุ่มแชทวุ่นวายไปด้วยแผนครึ่ง ๆ กลาง ๆ ไม่มีใครยืนยันจุดนัดพบ คุณ:"},
+    options:[
+      { v:-2, label:{en:"Wait for someone else to finally send the final plan", th:"รอให้คนอื่นส่งแผนสุดท้ายมาในที่สุด"} },
+      { v:-1, label:{en:"Add a suggestion into the chat and see if it sticks", th:"เสนอไอเดียในแชทดูว่าจะมีคนเอาด้วยไหม"} },
+      { v:1, label:{en:"Just post the final plan yourself and tell everyone to follow it", th:"โพสต์แผนตัวเองเลยแล้วบอกให้ทุกคนทำตาม"} },
+      { v:2, label:{en:"Take over organizing entirely — time, place, who's bringing what", th:"รับหน้าที่จัดการทั้งหมดเองทุกอย่าง เวลา สถานที่ ใครเอาอะไรมา"} }
+    ]}
+];
+
+let current = 0;
+let raw = { con:0, str:0, mot:0, dir:0 };
+let answered = [];
+let quizQuestions = [];
+
+function shuffleArray(arr){
+  const a = arr.slice();
+  for(let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function renderHeader(){
+  const S = STRINGS[LANG];
+  document.getElementById('eyebrow1').innerHTML = S.eyebrow1;
+  document.getElementById('eyebrow2').textContent = S.eyebrow2;
+  document.getElementById('pageTitle').textContent = S.title;
+  document.getElementById('pageSubtitle').textContent = S.subtitle;
+  document.title = S.title;
+}
+
+function renderBadgeRail(){
+  const rail = document.getElementById('badgeRail');
+  rail.innerHTML = '';
+  for(let i=0;i<quizQuestions.length;i++){
+    const slot = document.createElement('div');
+    slot.className = 'stamp-slot' + (i < answered.length ? ' filled' : '');
+    if(i < answered.length){
+      slot.style.setProperty('--r', (Math.random()*10-5) + 'deg');
+      slot.textContent = '✓';
+    }
+    rail.appendChild(slot);
+  }
+}
+
+function setLang(lang){
+  LANG = lang;
+  document.body.classList.toggle('lang-th', lang === 'th');
+  document.documentElement.lang = lang;
+  document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+  document.getElementById('btnTh').classList.toggle('active', lang === 'th');
+  renderHeader();
+  if(SCREEN === 'intro') renderIntro();
+  else if(SCREEN === 'question') renderQuestion();
+  else if(SCREEN === 'result') renderResult();
+}
+
+function renderIntro(){
+  SCREEN = 'intro';
+  const S = STRINGS[LANG];
+  document.getElementById('app').innerHTML = `
+    <div class="card">
+      <p class="intro-body">${S.intro1}</p>
+      <p class="intro-body">${S.intro2}</p>
+      <div class="btn-row"><button class="btn-stamp" onclick="startQuiz()">${S.beginBtn}</button></div>
+    </div>
+  `;
+}
+
+function startQuiz(){
+  current = 0;
+  raw = { con:0, str:0, mot:0, dir:0 };
+  answered = [];
+  quizQuestions = shuffleArray(QUESTIONS).map(q => ({
+    axis: q.axis,
+    text: q.text,
+    options: shuffleArray(q.options)
+  }));
+  renderBadgeRail();
+  renderQuestion();
+}
+
+function renderQuestion(){
+  SCREEN = 'question';
+  const S = STRINGS[LANG];
+  const q = quizQuestions[current];
+  document.getElementById('app').innerHTML = `
+    <div class="form-card">
+      <div class="form-tag">${S.formTag}</div>
+      <div class="q-eyebrow">
+        <span>${S.questionOf(current+1, quizQuestions.length)}</span>
+      </div>
+      <p class="q-text">${q.text[LANG]}</p>
+      <div class="options">
+        ${q.options.map((o,i)=>`
+          <button class="opt" onclick="answer(${o.v})">
+            <span class="opt-letter">${S.letters[i]}</span>${o.label[LANG]}
+          </button>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function answer(v){
+  const q = quizQuestions[current];
+  raw[q.axis] += v;
+  answered.push({ axis:q.axis, v });
+  renderBadgeRail();
+  current += 1;
+  if(current < quizQuestions.length){
+    renderQuestion();
+  } else {
+    renderResult();
+  }
+}
+
+function normScore(axis){
+  return (raw[axis] + 10) / 5;
+}
+
+function traitCode(){
+  return ['con','str','mot','dir'].map(a=>{
+    const n = normScore(a);
+    return n >= 2 ? AXES[a].highCode : AXES[a].lowCode;
+  }).join('');
+}
+
+function renderResult(){
+  SCREEN = 'result';
+  const S = STRINGS[LANG];
+  const norm = { con:normScore('con'), str:normScore('str'), mot:normScore('mot'), dir:normScore('dir') };
+
+  const distances = Object.entries(ROLES).map(([key, role]) => {
+    const p = role.profile;
+    const d = Math.sqrt(
+      Math.pow(norm.con - p.con, 2) +
+      Math.pow(norm.str - p.str, 2) +
+      Math.pow(norm.mot - p.mot, 2) +
+      Math.pow(norm.dir - p.dir, 2)
+    );
+    return { key, role, d };
+  }).sort((a,b) => a.d - b.d);
+
+  const winner = distances[0];
+  const runnerUp = distances[1];
+  const code = traitCode();
+  const wr = winner.role[LANG];
+  const rr = runnerUp.role[LANG];
+
+  document.getElementById('app').innerHTML = `
+    <div class="badge-mount">
+      <div class="badge" style="--role-color:${winner.role.color}">
+        <div class="lanyard"></div>
+        <div class="punch"></div>
+        <div class="ribbon-corner">${S.approvedTag}</div>
+        <div class="role-name">${wr.name}</div>
+        <div class="trait-code">${S.traitProfile} <b>${code}</b></div>
+        <div class="role-motto">"${wr.motto}"</div>
+        <p class="role-note">${wr.note}</p>
+        <p class="role-note">${wr.personality}</p>
+        <div class="runner-up">${S.closeSecond(rr.name)}</div>
+        <div class="breakdown">
+          <div class="breakdown-title">${S.breakdownTitle}</div>
+          ${['con','str','mot','dir'].map(a => `
+            <div class="bd-row">
+              <span class="bd-pole">${AXES[a].low[LANG]}</span>
+              <div class="bd-track"><div class="bd-fill" style="--axis-color:${AXES[a].color}; left:${(norm[a]/4)*100}%"></div></div>
+              <span class="bd-pole right">${AXES[a].high[LANG]}</span>
+            </div>
+          `).join('')}
+        </div>
+        <div class="badge-footer"><span>${S.ribbonLeft}</span><span>${S.ribbonRight}</span></div>
+      </div>
+    </div>
+    <div class="btn-row-result">
+      <button class="btn-ghost" onclick="startQuiz()">${S.reapplyBtn}</button>
+    </div>
+  `;
+}
+
+renderHeader();
+renderIntro();
+</script>
+</body>
+</html>
